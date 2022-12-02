@@ -1,11 +1,18 @@
-const baseUrl = `https://bluemercury98.herokuapp.com`
+const baseUrl = `https://api.imgur.com/3`
+const token = '2e299b9f2ce5bc47011e59988aba1700ae88b758'
+const obj = {
+    headers : {
+        Authorization : `Bearer ${token}`,
+        'Content-type': 'application/json'
+    }
+}
 
 async function getdata(url){
     try {
-        const res = await fetch(url);
+        const res = await fetch(url,obj);
         const data = await res.json();
         // console.log(data);
-        return data;
+        return data.data;
       } catch (error) {
         console.log(error);
       }
@@ -16,9 +23,7 @@ async function postData(url,datas){
         const res = await fetch(url,{
             method: 'POST',
             body:datas,
-            headers: {
-                'Content-type': 'application/json'
-            }
+            headers:obj.headers
         })
         const data = await res.json()
         // console.log(data)
@@ -32,9 +37,7 @@ async function deleteData(url){
     try {
         const res = await fetch(url,{
             method: 'DELETE',
-            headers: {
-                'Content-type': 'application/json'
-            }
+            headers:obj.headers
         })
         // console.log(res)
         const data = await res.json()
@@ -51,9 +54,7 @@ async function patchData(url,datas){
         const res = await fetch(url,{
             method: 'PATCH',
             body:datas,
-            headers: {
-                'Content-type': 'application/json'
-            }
+            headers:obj.headers
         })
         const data = await res.json()
         // console.log(data)
@@ -63,45 +64,4 @@ async function patchData(url,datas){
     }
 }
 
-
-async function changeQuantity(i,id){
-    const data = JSON.parse(localStorage.getItem("cloneBag")) || []
-    let index 
-    const present = data.filter(({id : bag_id},ind)=>{
-        if(id===bag_id){
-            index = ind
-            return true
-        }
-        return false
-    })
-    if(present.length>0){
-        if(present[0].quantity+i===0){
-            data.splice(index,1)
-        }
-        else{
-            present[0].quantity +=i
-        }
-    }
-    else{
-        const product = await getdata(`${baseUrl}/product/${id}`)
-        product.quantity = 1
-        data.push(product)
-    }
-    localStorage.setItem("cloneBag",JSON.stringify(data))
-}
-
-async function removeItem(id){
-    const data = JSON.parse(localStorage.getItem("cloneBag")) || []
-    let index 
-    const present = data.filter(({id : bag_id},ind)=>{
-        if(id===bag_id){
-            index = ind
-            return true
-        }
-        return false
-    })
-    data.splice(index,1)
-    localStorage.setItem("cloneBag",JSON.stringify(data))
-}
-
-export {baseUrl, getdata, postData, deleteData, patchData, changeQuantity, removeItem}
+export {baseUrl, getdata, postData, deleteData, patchData}
