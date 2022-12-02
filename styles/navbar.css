@@ -1,0 +1,123 @@
+* {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Proxima Nova Regular, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    background-color: rgb(23, 20, 68);
+    color: white;
+}
+
+.Navbar {
+    position: sticky;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NavbarContainer-left {
+    display: flex;
+}
+
+.Button {
+    background-color: #1bb76e;
+    color: #fff;
+    padding: 6px 10px 6px 9px;
+    display: inline-block;
+    border-radius: 3px;
+    width: auto;
+    font-size: 15px;
+    font-weight: 400;
+    box-shadow: 0 6px 10px 0 rgb(27 28 30 / 31%);
+}
+
+.upload {
+    margin: auto 20px;
+    /* height: 35px; */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.NavbarContainer-center {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 550px;
+}
+
+.searchbar-textInput {
+    padding: 8px 35px 8px 10px;
+    width: 100%;
+    outline: 0 none;
+    border-radius: 3px;
+    opacity: 0.8;
+    background: hsla(0, 0%, 100%, .25);
+    border: 1px solid transparent;
+    color: #fff;
+    /* min-height: 36px; */
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: .4px;
+    text-shadow: inherit;
+}
+
+.searchbar-textInput::placeholder {
+    color: rgb(168, 166, 181);
+    opacity: 1;
+}
+
+.Searchbar-submitInput {
+    /* position: absolute; */
+    font-size: 20px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-left: -40px;
+    background: transparent;
+    color: #fff;
+    border: 0;
+    outline: 0 none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.NavbarContainer-center-dropDown {
+    position: absolute;
+    z-index: 100;
+    width: 520px;
+    max-height: 300px;
+    background-color: rgb(60, 67, 75);
+    border-radius: 5px;
+    padding-left: 20px;
+    overflow-y: scroll;
+}
+
+.NavbarContainer-center-dropDown>div>p {
+    cursor: pointer;
+}
+
+.NavbarContainer-right {
+    display: flex;
+    align-items: center;
+}
+
+.EmeraldButton {
+    background: #6432f9;
+    box-shadow: 0 3px 4px rgb(0 0 0 / 12%);
+    padding: 0 10px 0 9px;
+    overflow: hidden;
+    margin: auto 0;
+    line-height: 35px;
+}
